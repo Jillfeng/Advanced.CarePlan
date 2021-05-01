@@ -1,0 +1,85 @@
+﻿@model Advanced.CarePlan.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="d-table">
+    <table class="table" id="CarePlanTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Patient Name</th>
+                <th>User Name</th>
+                <th>Actual Start Date</th>
+                <th>Target Date</th>
+                <th>Reason</th>
+                <th>Action</th>
+                <th>Completed</th>
+                <th>End Date</th>
+                <th>Outcome</th>
+                <th class=""></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var carePlan in Model.CarePlans)
+            {
+                <tr>
+                    <td>
+                        @(carePlan.Title)
+                    </td>
+                    <td>
+                        @(carePlan.PatientName)
+                    </td>
+                    <td>
+                        @(carePlan.UserName)
+                    </td>
+                    <td>
+                        @(carePlan.ActualStartDate)
+                    </td>
+                    <td>
+                        @(carePlan.TargetDate)
+                    </td>
+                    <td>
+                        @(carePlan.Reason)
+                    </td>
+                    <td>
+                        @(carePlan.Action)
+                    </td>
+                    <td>
+                        @(carePlan.Completed)
+                    </td>
+                    <td>
+                        @(carePlan.EndDate)
+                    </td>
+                    <td>
+                        @(carePlan.Title)
+                    </td>
+                    <td>
+                        <a onclick="UpdateCarePlan('@(carePlan.CarePlanId)')">Edit</a>
+                        <a onclick="DeleteCarePlan('@(carePlan.CarePlanId)')">Delete</a>
+                    </td>
+                </tr>                               
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a onclick="AddCarePlan">Add care Plan</a>
+</div>
+
+@section scripts
+{ 
+    <script language="javascript">
+        $(document.ready(function () {
+            $("#CarePlanTable").DataTable();
+        }))
+        function UpdateCarePlan(id) {
+            document.location.href = "@(Url.Action("GetCarePlan", "Home"))" + id;
+        }
+        function DeleteCarePlan(id) {
+            document.location.href = "@(Url.Action("DeleteCarePlan", "Home"))" + id;
+        }
+    </script>
+}
+
+

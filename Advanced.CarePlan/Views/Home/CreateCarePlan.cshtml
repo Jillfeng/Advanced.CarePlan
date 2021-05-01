@@ -1,0 +1,50 @@
+﻿@model Advanced.CarePlan.Models.CarePlanViewModel
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <div>
+        <label>Title</label>
+        @Html.TextBoxFor(m => m.Title)
+    </div>
+    <div>
+        <label>Patient Name</label>
+        @Html.TextBoxFor(m => m.PatientName)
+    </div>
+    <div>
+        <label>UserName</label>
+        @Html.TextBoxFor(m => m.UserName)
+    </div>
+    <div>
+        <label>Actual Start Date</label>
+        @Html.TextBoxFor(m => m.ActualStartDate)
+    </div>
+    <div>
+        <label>Target Date</label>
+        @Html.TextBoxFor(m => m.TargetDate)
+    </div>
+    <div>
+        <label>Reason</label>
+        @Html.TextBoxFor(m => m.Reason)
+    </div>
+    <div>
+        <label>Action</label>
+        @Html.TextBoxFor(m => m.Action)
+    </div>
+    <div>
+        <label>Completed</label>
+        @Html.CheckBoxFor(m => m.Completed)
+    </div>
+    @if (Model.Completed == true)
+    {
+        <div>
+            <label>End Date</label>
+            @Html.TextBoxFor(m => m.EndDate)
+        </div>
+        <div>
+            <label>Out Come</label>
+            @Html.TextBoxFor(m => m.OutCome)
+        </div>
+    }
+
+    <input id="Submit" type="submit" value="submit" />
+}
